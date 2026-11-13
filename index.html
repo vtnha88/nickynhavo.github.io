@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nha Vo – Senior Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@font-face{font-family:"Nha Sans";font-style:normal;font-weight:400;font-display:swap;src:local("Helvetica Neue"),local("HelveticaNeue"),local("Helvetica"),local("Arial"),local("Liberation Sans"),local("Roboto"),local("Segoe UI")}
+@font-face{font-family:"Nha Sans";font-style:normal;font-weight:500;font-display:swap;src:local("Helvetica Neue Medium"),local("HelveticaNeue-Medium"),local("Helvetica Neue"),local("Helvetica"),local("Arial"),local("Liberation Sans"),local("Roboto Medium"),local("Roboto"),local("Segoe UI")}
+:root{--bg:#1d1919;--ink:#F3F4F6;--muted:#A39D9D;--line:#383232;--hi:#F3F4F6;--on-hi:#1d1919;--bad:#FF8A80;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;background:var(--bg)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Nha Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:500;letter-spacing:-.03em;line-height:1.05;margin:0}
+a{color:inherit}
+p{margin:0;max-width:44ch;color:var(--muted)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+.grid{display:grid;gap:1px;background:var(--line)}
+.grid>*{background:var(--bg);min-width:0}
+.cell{padding:2rem}
+section,header.top{border-bottom:1px solid var(--line)}
+/* nav */
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;position:relative}
+.logo{display:flex;align-items:center;gap:.5rem;font-weight:500;text-decoration:none}
+.logo::before{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--ink)}
+nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+.burger{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:.4rem}
+/* hero */
+.hero{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(17rem,1fr))}
+.hero .lead{grid-row:1/3;display:flex;flex-direction:column;justify-content:center;gap:2rem;padding:3rem 2rem}
+.hero h1{font-size:clamp(2.6rem,5.2vw,4.5rem);max-width:11ch}
+.stat{display:flex;flex-direction:column;justify-content:space-between}
+.stat .top2{display:flex;justify-content:space-between;align-items:flex-start}
+.stat svg{width:1.7rem;height:1.7rem;fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.num{font-size:clamp(2rem,3.4vw,2.8rem);font-weight:400;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat h3{font-size:1.05rem;letter-spacing:-.01em;line-height:1.3}
+.stat p{font-size:.88rem;margin-top:.2rem}
+/* career */
+.career{grid-template-columns:minmax(0,1.3fr) minmax(0,2fr)}
+.year{font-size:clamp(3.5rem,9vw,7rem);font-weight:500;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;margin:1rem 0 .75rem}
+.eyebrow{color:var(--muted);font-size:.95rem}
+input[type=range]{width:100%;accent-color:var(--ink);height:2rem;margin-top:1.5rem}
+.ticks{display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0 0;padding:0;list-style:none;align-content:flex-start;min-height:7rem}
+.chips li{border:1px solid var(--line);border-radius:4px;padding:.25rem .8rem;font-size:.95rem}
+.chips li.new{background:var(--hi);color:var(--on-hi);border-color:var(--hi)}
+.note{margin-top:.5rem;color:var(--ink);font-size:.95rem}
+/* work */
+.work{grid-template-columns:minmax(0,18rem) minmax(0,1fr)}
+[role=tablist]{display:grid;gap:1px;background:var(--line);align-content:start}
+[role=tab]{display:flex;gap:1rem;align-items:center;text-align:left;font:500 1rem/1.3 "Nha Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--muted);background:var(--bg);border:0;padding:1.5rem 2rem;cursor:pointer}
+[role=tab] small{display:block;font-weight:400;font-size:.85rem;margin-top:.15rem}
+[role=tab][aria-selected=true]{background:var(--hi);color:var(--on-hi)}
+[role=tab][aria-selected=true] small{color:#555}
+.case{padding:0}
+.case .head{padding:2rem;display:grid;gap:1rem}
+.case h3{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+.case .three{grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.case h4{margin:0 0 .6rem;font-weight:500;font-size:1rem}
+.case .three p{font-size:.95rem;max-width:none}
+.stack{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:1.25rem 2rem;list-style:none;border-top:1px solid var(--line)}
+.stack li{border:1px solid var(--line);border-radius:4px;padding:.15rem .7rem;font-size:.88rem}
+.draft{padding:1rem 2rem;border-top:1px solid var(--line);font-size:.85rem;max-width:none}
+.sites{grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr))}
+.sites .intro{display:grid;gap:1.25rem;align-content:start;padding:3rem 2rem}
+.sites h2{font-size:clamp(2rem,4vw,3.2rem)}
+.sites .site{display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem;min-height:14rem}
+.sites h3{font-size:1.4rem;letter-spacing:-.02em}
+.sites .site p{font-size:.95rem;margin-top:.4rem}
+.visit{display:inline-flex;align-items:center;gap:.5rem;width:fit-content;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:.15rem}
+.visit:hover{border-bottom-color:var(--ink)}
+.visit svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.links a{color:var(--ink)}
+/* about */
+.about{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr)}
+.about .l{grid-row:1/3;display:grid;gap:1.25rem;align-content:start;padding:3rem 2rem}
+.about h2,.contact h2{font-size:clamp(2rem,4vw,3.2rem)}
+.about h3{font-size:1.05rem;letter-spacing:-.01em;margin-bottom:1rem}
+.about ul{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.about li{line-height:1.35}.about li span{display:block;color:var(--muted);font-size:.88rem}
+/* contact */
+.contact{grid-template-columns:minmax(0,1.3fr) minmax(0,2fr)}
+.contact .l{padding:3rem 2rem;display:grid;gap:1.25rem;align-content:start}
+form{display:grid;gap:1.5rem;padding:3rem 2rem;max-width:40rem}
+label{display:grid;gap:.4rem;color:var(--muted);font-size:.9rem}
+input.t,textarea{font:inherit;font-size:1.05rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:.6rem 0;width:100%}
+input.t:focus,textarea:focus{outline:0;border-bottom-color:var(--ink)}
+[aria-invalid=true]{border-bottom-color:var(--bad)!important}
+.err{color:var(--bad);min-height:1.2em;font-size:.88rem}
+button.go{justify-self:start;font:500 1rem "Nha Sans","Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--hi);color:var(--on-hi);border:0;border-radius:4px;padding:.85rem 1.6rem;cursor:pointer}
+button.go:hover{opacity:.85}
+#status{min-height:1.5em;font-size:.95rem}
+footer{padding:1.5rem 2rem 2.5rem;color:var(--muted);font-size:.9rem}
+@media (max-width:900px){
+ header.top{padding:1.25rem}
+ .burger{display:block}
+ nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+ nav ul.open{display:flex}nav li a{display:block;padding:1rem 1.25rem;border-top:1px solid var(--line)}
+ .hero,.career,.work,.about,.contact,.sites{grid-template-columns:1fr;grid-template-rows:none}
+ .sites .intro{padding:2.5rem 1.25rem}.sites .site{min-height:11rem}
+ .hero .lead,.about .l{grid-row:auto;padding:2.5rem 1.25rem}
+ .cell,.contact .l,form{padding:1.5rem 1.25rem}
+ .stat{min-height:11rem}
+ [role=tablist]{display:flex;overflow-x:auto}[role=tab]{min-width:14rem;padding:1.25rem}
+ .case .three{grid-template-columns:1fr}.case .head,.stack,.draft{padding-left:1.25rem;padding-right:1.25rem}
+ footer{padding:1.5rem 1.25rem 2.5rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="logo" href="#top">Nha Vo</a>
+<nav aria-label="Main"><ul id="menu"><li><a href="#work">Work</a></li><li><a href="#sites">Websites</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h16M3 14h16"/></svg></button>
+</header>
+
+<section id="top" class="grid hero">
+<div class="lead"><h1>Interfaces that hold up as products grow.</h1><p>I’m Nha Vo, a senior frontend developer in Ho Chi Minh City. I build React and TypeScript dashboards, component systems and fast, tested UI.</p></div>
+<div class="cell stat"><div class="top2"><svg viewBox="0 0 28 28"><path d="M14 2c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z"/></svg><div class="num">15+</div></div><div><h3>Years building web apps</h3><p>Since 2011, from HTML and CSS to React.</p></div></div>
+<div class="cell stat"><div class="top2"><svg viewBox="0 0 28 28"><path d="M14 5v18M5 14h18"/></svg><div class="num">2</div></div><div><h3>Companies</h3><p>FPT Software and Tagrem Corporation.</p></div></div>
+<div class="cell stat"><div class="top2"><svg viewBox="0 0 28 28"><path d="M5 14h18M16 7l7 7-7 7"/></svg><div class="num">3</div></div><div><h3>Certificates</h3><p>AWS, Scrum.org and Udacity DevOps.</p></div></div>
+<div class="cell stat"><div class="top2"><svg viewBox="0 0 28 28"><path d="M3 21l8-8 5 5 9-10M19 8h6v6"/></svg><div class="num">8+</div></div><div><h3>Years at FPT Software</h3><p>React, Next.js and TypeScript at scale.</p></div></div>
+</section>
+
+<section class="grid career">
+<div class="cell"><p class="eyebrow">Drag through my career</p><div class="year" id="year" aria-live="polite">2026</div><p id="role"></p></div>
+<div class="cell">
+<label for="yr" style="position:absolute;left:-9999px">Year</label>
+<input type="range" id="yr" min="2011" max="2026" value="2026" step="1" style="margin-top:0">
+<div class="ticks"><span>2011</span><span>2018</span><span>2026</span></div>
+<ul class="chips" id="chips" aria-label="Tools used in this period"></ul>
+<p class="note" id="note"></p>
+</div>
+</section>
+
+<section id="work" class="grid work">
+<div role="tablist" aria-label="Case studies" id="tabs"></div>
+<article class="case" id="panel" role="tabpanel" tabindex="0"></article>
+</section>
+
+<section id="sites" class="grid sites">
+<div class="intro"><h2>Websites I’ve built.</h2><p>Live sites from my years at Tagrem. Each one opens in a new tab.</p></div>
+<div class="cell site"><div><h3>Serta.com</h3><p>Mattress brand website.</p></div><a class="visit" href="http://www.serta.com" target="_blank" rel="noopener">Visit website<svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7"/></svg></a></div>
+<div class="cell site"><div><h3>Tagrem</h3><p>Modern technology services company.</p></div><a class="visit" href="http://www.tagrem.com" target="_blank" rel="noopener">Visit website<svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7"/></svg></a></div>
+<div class="cell site"><div><h3>Indition</h3><p>Software platform.</p></div><a class="visit" href="https://indition.com/index.html" target="_blank" rel="noopener">Visit website<svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7"/></svg></a></div>
+</section>
+
+<section id="about" class="grid about">
+<div class="l"><h2>Design files in, fast and consistent interfaces out.</h2>
+<p>I started in 2011 with HTML, CSS and Photoshop mockups and now work mostly in React, Next.js and TypeScript on enterprise applications.</p>
+<p>Day to day I build reusable components, connect REST APIs, tune performance, write tests and review code. I mentor junior developers and work in Agile/Scrum teams.</p></div>
+<div class="cell"><h3>Experience</h3><ul><li>FPT Software<span>Front End Developer, Apr 2018 to now</span></li><li>Tagrem Corporation<span>Front End Developer, Apr 2011 to Apr 2018</span></li></ul></div>
+<div class="cell"><h3>Certificates</h3><ul><li>Professional Scrum Master I<span>Scrum.org, May 2022</span></li><li>AWS Cloud Practitioner<span>Apr 2021</span></li><li>Cloud DevOps Engineer<span>Udacity, Sep 2023</span></li></ul></div>
+<div class="cell" style="grid-column:2/4"><h3>Education and languages</h3><ul><li>DNIIT Binh Thanh<span>2009 to 2011</span></li><li>English<span>Intermediate</span></li></ul></div>
+</section>
+
+<section id="contact" class="grid contact">
+<div class="l"><h2>Let’s talk about your project.</h2><p>Tell me what you’re building and I’ll reply by email.</p><p class="links"><a href="https://www.linkedin.com/in/nha-vo-84b27795" target="_blank" rel="noopener">LinkedIn</a> and <a href="https://www.facebook.com/nha.vothanh88" target="_blank" rel="noopener">Facebook</a></p></div>
+<form id="f" novalidate>
+<label>Your name<input class="t" name="name" autocomplete="name" required><span class="err"></span></label>
+<label>Your email<input class="t" name="email" type="email" autocomplete="email" required><span class="err"></span></label>
+<label>What do you need built?<textarea name="msg" rows="4" required></textarea><span class="err"></span></label>
+<button class="go" type="submit">Send message</button>
+<div id="status" role="status"></div>
+</form>
+</section>
+<footer>Nha Vo · Ho Chi Minh City, Vietnam · <a href="mailto:nha.vothanh88@gmail.com">nha.vothanh88@gmail.com</a></footer>
+
+<script>
+const burger=document.getElementById("burger"),menu=document.getElementById("menu");
+burger.onclick=()=>{const o=menu.classList.toggle("open");burger.setAttribute("aria-expanded",o);burger.setAttribute("aria-label",o?"Close menu":"Open menu")};
+menu.addEventListener("click",e=>{if(e.target.tagName==="A"){menu.classList.remove("open");burger.setAttribute("aria-expanded","false")}});
+const eras=[
+{from:2011,to:2017,role:"Front End Developer, Tagrem Corporation",tools:["HTML5","CSS3","JavaScript","Photoshop mockups","Cross-browser testing","Responsive layouts"],note:"Pixel-perfect builds from design files, plus mentoring juniors."},
+{from:2018,to:2026,role:"Front End Developer, FPT Software",tools:["React.js","Next.js","TypeScript","Redux Toolkit","TanStack Query","Axios","Zustand","Tailwind CSS","Jest","React Testing Library","Cypress","jQuery (legacy)"],note:"Enterprise dashboards, reusable components and performance work."}];
+const certs={2021:"AWS Cloud Practitioner",2022:"Professional Scrum Master I",2023:"Cloud DevOps Engineer"};
+const yr=document.getElementById("yr"),chips=document.getElementById("chips");let prev=null;
+function scrub(){
+ const y=+yr.value,e=eras.find(x=>y>=x.from&&y<=x.to);
+ document.getElementById("year").textContent=y;
+ document.getElementById("role").textContent=e.role;
+ chips.innerHTML="";
+ e.tools.forEach(t=>{const li=document.createElement("li");li.textContent=t;if(prev!==e)li.className="new";chips.appendChild(li)});
+ document.getElementById("note").textContent=e.note+(certs[y]?" Earned: "+certs[y]+".":"");
+ prev=e;
+}
+yr.addEventListener("input",scrub);scrub();
+const cases=[
+{id:"dash",title:"Business dashboards",meta:"FPT Software",
+ sum:"Dashboards that bring several business modules into one place for different kinds of users.",
+ problem:"Teams needed to manage complex workflows and read reports across multiple modules, and each role should only see what it’s allowed to.",
+ approach:"Role-based access control, advanced tables with filtering and search, forms, charts and reports. State and server data run through React Hooks, Redux Toolkit, Axios and TanStack Query, with caching, loading states and error handling.",
+ result:"[Add a result here: users, time saved, or a quote from the team.]",
+ stack:["React.js","Next.js","TypeScript","Redux Toolkit","TanStack Query","Axios"]},
+{id:"ui",title:"Reusable component library",meta:"FPT Software and Tagrem",
+ sum:"Shared UI building blocks that keep products consistent and faster to build.",
+ problem:"Screens across projects drifted apart in look and behavior, and every new feature repeated work.",
+ approach:"Reusable components and a scalable frontend structure, coding standards set through code reviews, and key components covered by unit and component tests. The habit began at Tagrem.",
+ result:"[Add a result here: components shipped, projects using them, or review time saved.]",
+ stack:["React.js","TypeScript","Tailwind CSS","Jest","React Testing Library","Cypress"]},
+{id:"perf",title:"Performance pass",meta:"FPT Software",
+ sum:"Making large, data-heavy screens load and respond faster.",
+ problem:"Data-heavy interfaces were getting slow as modules and bundle size grew.",
+ approach:"Code splitting, lazy loading, memoization and rendering optimization, plus a smaller bundle. I also tracked down hard-to-reproduce issues with data handling and UI consistency.",
+ result:"[Add measured numbers here: load time, bundle size, Lighthouse score.]",
+ stack:["Code splitting","Lazy loading","Memoization","Bundle optimization","React.js"]}];
+const tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+cases.forEach((c,i)=>{const b=document.createElement("button");b.setAttribute("role","tab");b.id="tab-"+c.id;b.setAttribute("aria-controls","panel");b.innerHTML="<span>"+c.title+"<small>"+c.meta+"</small></span>";b.onclick=()=>show(i);
+ b.onkeydown=ev=>{let j=null;if(ev.key==="ArrowDown"||ev.key==="ArrowRight")j=(i+1)%cases.length;if(ev.key==="ArrowUp"||ev.key==="ArrowLeft")j=(i+cases.length-1)%cases.length;if(j!==null){ev.preventDefault();show(j);tabs.children[j].focus()}};tabs.appendChild(b)});
+function show(i){
+ const c=cases[i];
+ [...tabs.children].forEach((b,j)=>{b.setAttribute("aria-selected",j===i);b.tabIndex=j===i?0:-1});
+ panel.setAttribute("aria-labelledby","tab-"+c.id);
+ panel.innerHTML="<div class='head'><h3></h3><p class='sum'></p></div><div class='grid three'><div class='cell'><h4>The problem</h4><p></p></div><div class='cell'><h4>What I did</h4><p></p></div><div class='cell'><h4>Result</h4><p></p></div></div><ul class='stack'></ul><p class='draft'>Draft written from my CV. Replace the bracketed result with real numbers or screenshots.</p>";
+ panel.querySelector("h3").textContent=c.title;panel.querySelector(".sum").textContent=c.sum;
+ const p=panel.querySelectorAll(".three p");p[0].textContent=c.problem;p[1].textContent=c.approach;p[2].textContent=c.result;
+ const ul=panel.querySelector(".stack");c.stack.forEach(s=>{const li=document.createElement("li");li.textContent=s;ul.appendChild(li)});
+}
+show(0);
+const f=document.getElementById("f"),st=document.getElementById("status");
+f.addEventListener("submit",e=>{
+ e.preventDefault();let ok=true;
+ const msgs={name:"Enter your name so I know who to reply to.",email:"Enter an email address like name@example.com.",msg:"Tell me a little about what you need built."};
+ ["name","email","msg"].forEach(n=>{
+  const el=f.elements[n],bad=!el.value.trim()||(n==="email"&&!/^\S+@\S+\.\S+$/.test(el.value));
+  el.setAttribute("aria-invalid",bad);el.nextElementSibling.textContent=bad?msgs[n]:"";if(bad)ok=false;
+ });
+ if(!ok){st.textContent="Fix the highlighted fields and send again.";return}
+ const body="From: "+f.elements.name.value+" ("+f.elements.email.value+")\n\n"+f.elements.msg.value;
+ st.textContent="Opening your email app with the message ready to send.";
+ location.href="mailto:nha.vothanh88@gmail.com?subject="+encodeURIComponent("Portfolio enquiry from "+f.elements.name.value)+"&body="+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
