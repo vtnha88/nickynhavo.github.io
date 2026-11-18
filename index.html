@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23101010%22%2F%3E%0A%3Cpath%20d%3D%2２M15%２０48V16h8l18％２０２０V16h8v3２h-8L２３％２０２８v２０z％２０fill％３Ｄ％２３d8ff00％２０/%３E％０Ａ％３Cpath％２０d％３Ｄ％２３M49％２０9h7l-5％２０10h-7z％２０fill％３Ｄ％２３f0efec％２０/%３E％０Ａ％３C/svg％３E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23101010%22%2F%3E%0A%3Cpath%20d%3D%22M15%2048V16h8l18%2020V16h8v32h-8L23%2028v20z%22%20fill%3D%22%23d8ff00%22%2F%3E%0A%3Cpath%20d%3D%22M49%209h7l-5%2010h-7z%22%20fill%3D%22%23f0efec%22%2F%3E%0A%3C%2Fsvg%3E">
+<link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23101010%22%2F%3E%0A%3Cpath%20d%3D%22M15%2048V16h8l18%2020V16h8v32h-8L23%2028v20z%22%20fill%3D%22%23d8ff00%22%2F%3E%0A%3Cpath%20d%3D%22M49%209h7l-5%2010h-7z%22%20fill%3D%22%23f0efec%22%2F%3E%0A%3C%2Fsvg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f0efec">
 <meta name="description" content="Nha Vo — Senior Frontend Developer with 15+ years of experience building web applications.">
@@ -87,13 +88,83 @@ nav a:hover:after{right:0}
  *,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 
+
+/* Light / dark appearance */
+:root{color-scheme:light;--paper:#f0efec;--white:#faf9f6;--ink:#111;--muted:#77746f;--line:#c9c7c1;--black:#101010;--accent:#d8ff00}
+.header-actions{display:flex;align-items:center;gap:14px}
+.theme-toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 12px;border-radius:999px;font:800 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.theme-toggle:hover{transform:translateY(-2px);background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.theme-icon{font-size:15px;line-height:1}
+body,header.top,.hero,.projects,.project,.skills,.section-head,.work,.about,.career,.contact,footer,.case,.skill-row{transition:background-color .3s ease,color .3s ease,border-color .3s ease}
+html[data-theme="dark"]{color-scheme:dark;--paper:#15161b;--white:#1e2027;--ink:#f1f0ec;--muted:#aaa9a3;--line:#3b3d45;--black:#0c0d11;--accent:#d8ff00}
+html[data-theme="dark"] body{background:var(--paper);color:var(--ink)}
+html[data-theme="dark"] header.top,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .projects,
+html[data-theme="dark"] .skills,
+html[data-theme="dark"] .section-head,
+html[data-theme="dark"] .work,
+html[data-theme="dark"] .about{background:var(--paper);color:var(--ink)}
+html[data-theme="dark"] .logo:before{color:#f4f3ef}
+html[data-theme="dark"] nav a{color:#d0cfc9}
+html[data-theme="dark"] .hero .role{color:#e5e3dc}
+html[data-theme="dark"] .hero .summary,
+html[data-theme="dark"] .skill-row p,
+html[data-theme="dark"] .about .l p,
+html[data-theme="dark"] .about li span,
+html[data-theme="dark"] .project .project-desc{color:#b8b7b1}
+html[data-theme="dark"] .hero-meta{border-color:var(--line);color:#d4d2cb}
+html[data-theme="dark"] .hero-meta span:last-child{color:#aaa9a3}
+html[data-theme="dark"] .scroll-cue{color:#c8c7c1}
+html[data-theme="dark"] .section-head .eyebrow,
+html[data-theme="dark"] .eyebrow{color:#c5a99c}
+html[data-theme="dark"] .project{background:#1b1d24;color:#f3f2ed;border-color:#3a3c44}
+html[data-theme="dark"] .project:nth-child(even){background:#20222a}
+html[data-theme="dark"] .project:before{background:linear-gradient(120deg,transparent 48%,rgba(255,255,255,.025) 48.1%,transparent 70%)}
+html[data-theme="dark"] .project:after{background:#343741;opacity:.55}
+html[data-theme="dark"] .project:nth-child(even):after{background:#3b3e49}
+html[data-theme="dark"] .project .period,
+html[data-theme="dark"] .project .team{color:#b8b7b1}
+html[data-theme="dark"] .project .project-stack li{border-color:#5b5d66;color:#d5d4ce}
+html[data-theme="dark"] .skill-row{border-color:var(--line)}
+html[data-theme="dark"] .skill-row:hover h3{color:#c8c7c1}
+html[data-theme="dark"] .work{border-color:var(--line)}
+html[data-theme="dark"] .work [role=tablist]{border-color:var(--line)}
+html[data-theme="dark"] .work [role=tab]{color:#b8b7b1;border-color:var(--line)}
+html[data-theme="dark"] .work [role=tab][aria-selected=true]{background:var(--accent);color:#111}
+html[data-theme="dark"] .case .sum,
+html[data-theme="dark"] .case .three p{color:#b8b7b1}
+html[data-theme="dark"] .case .three{border-color:var(--line)}
+html[data-theme="dark"] .stack li{border-color:#555861;color:#d4d3cd}
+html[data-theme="dark"] .stack li:hover{background:var(--accent);color:#111}
+html[data-theme="dark"] .about .cell{border-color:var(--line)}
+html[data-theme="dark"] .about li span{color:#aaa9a3}
+html[data-theme="dark"] .contact{background:#090a0e;color:#f1f0ec}
+html[data-theme="dark"] .contact .l p{color:#aaa9a3}
+html[data-theme="dark"] footer{background:#090a0e;color:#aaa9a3;border-color:#33353c}
+html[data-theme="dark"] footer a{color:#f1f0ec}
+html[data-theme="dark"] .theme-toggle{border-color:#555861;color:#f1f0ec}
+html[data-theme="dark"] .theme-toggle:hover{background:#f1f0ec;color:#111;border-color:#f1f0ec}
+html[data-theme="dark"] .burger{color:#f1f0ec}
+html[data-theme="dark"] .contact input.t,
+html[data-theme="dark"] .contact textarea{color:#fff}
+@media(max-width:800px){
+ .header-actions{gap:8px}
+ .theme-toggle{padding:8px 10px}
+ html[data-theme="dark"] nav ul{background:#1e2027;border-color:#3b3d45}
+}
+@media(prefers-reduced-motion:reduce){body,header.top,.hero,.projects,.project,.skills,.section-head,.work,.about,.career,.contact,footer,.case,.skill-row{transition:none}}
+
 </style>
 </head>
 <body>
 <header class="top">
  <a class="logo" href="#top" aria-label="Nha Vo home">Nha Vo</a>
  <nav aria-label="Main navigation"><ul id="menu"><li><a href="#projects">Works</a></li><li><a href="#skills">Mad skills</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></nav>
- <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
+ <div class="header-actions">
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
+ </div>
 </header>
 <section id="top" class="hero">
  <div class="hero-inner">
@@ -311,6 +382,39 @@ f.addEventListener("submit",e=>{
     }
   }, { passive: true });
   updateProgress();
+})();
+
+
+// Persistent light/dark theme switch.
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById("themeToggle");
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (!toggle) return;
+
+  const saved = (() => {
+    try { return localStorage.getItem("nha-vo-theme"); }
+    catch (_) { return null; }
+  })();
+  const initial = saved === "dark" || saved === "light" ? saved : "light";
+
+  function applyTheme(theme) {
+    const dark = theme === "dark";
+    root.dataset.theme = theme;
+    toggle.querySelector(".theme-icon").textContent = dark ? "☀" : "☾";
+    toggle.querySelector(".theme-label").textContent = dark ? "Light" : "Dark";
+    toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    toggle.title = dark ? "Switch to light mode" : "Switch to dark mode";
+    if (metaTheme) metaTheme.setAttribute("content", dark ? "#15161b" : "#f0efec");
+  }
+
+  applyTheme(initial);
+  toggle.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(next);
+    try { localStorage.setItem("nha-vo-theme", next); }
+    catch (_) { /* Theme still works for this page view if storage is unavailable. */ }
+  });
 })();
 
 </script>
